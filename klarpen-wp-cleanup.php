@@ -220,7 +220,6 @@ if ( defined('HIDE_ACF_ADMIN_PANEL') && HIDE_ACF_ADMIN_PANEL ) {
 add_action( 'admin_bar_init', function(){
 	remove_action( 'wp_head', '_admin_bar_bump_cb' ); // html margin bumps
 	add_action( 'wp_before_admin_bar_render', 'klrpn_adminbar_styles' );
-	//add_action( 'wp_after_admin_bar_render', 'set_adminbar_styles_show' );
 });
 function klrpn_adminbar_styles(){
 	if( is_admin() ) return; // Выходим если админка
