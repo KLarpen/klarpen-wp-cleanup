@@ -82,3 +82,9 @@ function klrpn_clear_wp_dash(){
 }
 # Удаление виджета "Добро пожаловать"
 remove_action( 'welcome_panel', 'wp_welcome_panel' );
+
+# Switch off RSS Feeds
+// remove_action( 'do_feed_rdf',  'do_feed_rdf',  10, 1 );
+// remove_action( 'do_feed_rss',  'do_feed_rss',  10, 1 );
+remove_action( 'do_feed_rss2', 'do_feed_rss2', 10, 1 );
+remove_action( 'do_feed_atom', 'do_feed_atom', 10, 1 );
