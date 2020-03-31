@@ -7,7 +7,7 @@
  * Author URI:      https://github.com/KLarpen
  * Text Domain:     klrpn-wpcleanup
  * Domain Path:     /languages
- * Version:         0.1.0
+ * Version:         1.0.0
  *
  * @package         Klarpen_WP_Cleanup
  */
@@ -206,12 +206,9 @@ function klrpn_customize_register( $wp_customize ) {
 * Switch on/off by HIDE_ACF_ADMIN_PANEL constant value in the wp-config.php
 * e.g. define( 'HIDE_ACF_ADMIN_PANEL', false ); // Option to hide ACF's "Field Groups" page from Admin Panel
 */
-if ( defined('HIDE_ACF_ADMIN_PANEL') && HIDE_ACF_ADMIN_PANEL ):
-	add_filter('acf/settings/show_admin', 'my_acf_settings_show_admin');
-	function my_acf_settings_show_admin( $show_admin ) {
-			return false;
-	}
-endif;
+if ( defined('HIDE_ACF_ADMIN_PANEL') && HIDE_ACF_ADMIN_PANEL ) {
+  add_filter('acf/settings/show_admin', function( $show_admin ) { return false; } );
+}
 
 
 
