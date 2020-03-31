@@ -1,8 +1,8 @@
 <?php
 /**
  * Plugin Name:     KLarpen WP Cleanup
- * Plugin URI:      PLUGIN SITE HERE
- * Description:     Custom code to clean up / remove / switch off unused WP features.
+ * Plugin URI:      https://github.com/KLarpen/klarpen-wp-cleanup
+ * Description:     Custom code to clean up / remove / switch off unused WP features. The plugin intended to use by developers only: there is no UI! More details at the README.md and the plugin's file itself.
  * Author:          KLarpen
  * Author URI:      https://github.com/KLarpen
  * Text Domain:     klrpn-wpcleanup
