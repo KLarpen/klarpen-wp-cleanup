@@ -212,3 +212,35 @@ if ( defined('HIDE_ACF_ADMIN_PANEL') && HIDE_ACF_ADMIN_PANEL ):
 			return false;
 	}
 endif;
+
+
+
+/**
+ * Переносим панель инструментов для front end вниз экрана
+ * 
+ * @author Kama (https://wp-kama.ru)
+ */
+add_action( 'admin_bar_init', function(){
+	remove_action( 'wp_head', '_admin_bar_bump_cb' ); // html margin bumps
+	add_action( 'wp_before_admin_bar_render', 'klrpn_adminbar_styles' );
+	//add_action( 'wp_after_admin_bar_render', 'set_adminbar_styles_show' );
+});
+function klrpn_adminbar_styles(){
+	if( is_admin() ) return; // Выходим если админка
+	ob_start();
+	?>
+	<style>
+		body.admin-bar { margin-top: 0; padding-bottom: 32px; }
+		#wpadminbar { top: auto !important; bottom: 0; }
+		#wpadminbar .quicklinks>ul>li { position:relative; }
+		#wpadminbar .ab-top-menu>.menupop>.ab-sub-wrapper { bottom: 32px; }
+		#wp-admin-bar-wp-logo{ display:none; } /* hide wp-logo */
+		/* remove absolute positioning for mobile */
+		@media screen and (max-width: 600px) {
+			#wpadminbar { position: fixed; }
+		}
+	</style>
+	<?php
+	$styles = ob_get_clean();
+	echo preg_replace( '/[\n\t]/', '', $styles ) ."\n";
+}
