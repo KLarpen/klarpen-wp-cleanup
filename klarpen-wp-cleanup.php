@@ -65,3 +65,20 @@ function klrpn_unregister_basic_widgets() {
 	// unregister_widget('WP_Widget_Media_Gallery');
 	// unregister_widget('WP_Widget_Media_Image');
 }
+
+# Удаление виджетов из Консоли WordPress
+add_action( 'wp_dashboard_setup', 'klrpn_clear_wp_dash' );
+function klrpn_clear_wp_dash(){
+	$dash_side   = & $GLOBALS['wp_meta_boxes']['dashboard']['side']['core'];
+	$dash_normal = & $GLOBALS['wp_meta_boxes']['dashboard']['normal']['core'];
+
+	unset( $dash_side['dashboard_quick_press'] );       // Быстрая публикация
+	unset( $dash_side['dashboard_primary'] );           // Блог WordPress
+	unset( $dash_side['dashboard_secondary'] );         // Другие Новости WordPress
+
+	// unset( $dash_normal['dashboard_incoming_links'] );  // Входящие ссылки
+	// unset( $dash_normal['dashboard_recent_comments'] ); // Последние комментарии
+	// unset( $dash_normal['dashboard_plugins'] );         // Последние Плагины
+}
+# Удаление виджета "Добро пожаловать"
+remove_action( 'welcome_panel', 'wp_welcome_panel' );
