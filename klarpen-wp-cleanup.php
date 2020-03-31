@@ -152,3 +152,18 @@ add_action( 'admin_head', function () {
 		remove_action( 'admin_notices', 'maintenance_nag', 10 );
 	}
 } );
+
+/**
+ * Remove unused section in the Theme Customizer.
+ *
+ * @param WP_Customize_Manager $wp_customize Theme Customizer object.
+ */
+function klrpn_customize_register( $wp_customize ) {
+	// $wp_customize->remove_section( 'title_tagline' );
+	$wp_customize->remove_section( 'colors' );
+	// $wp_customize->remove_section( 'widgets' );
+	// $wp_customize->remove_section( 'static_front_page' );
+	// $wp_customize->remove_section( 'custom_css' );
+}
+# Uncomment if needed
+// add_action( 'customize_register', 'klrpn_customize_register' );
