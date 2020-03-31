@@ -214,29 +214,30 @@ if ( defined('HIDE_ACF_ADMIN_PANEL') && HIDE_ACF_ADMIN_PANEL ) {
 
 /**
  * Переносим панель инструментов для front end вниз экрана
+ * Для включения достаточно раскомментировать add_action(...) над функцией
  * 
  * @author Kama (https://wp-kama.ru)
  */
-add_action( 'admin_bar_init', function(){
+// add_action( 'admin_bar_init', 'klrpn_move_admin_bar_to_bottom' );
+function klrpn_move_admin_bar_to_bottom(){
 	remove_action( 'wp_head', '_admin_bar_bump_cb' ); // html margin bumps
-	add_action( 'wp_before_admin_bar_render', 'klrpn_adminbar_styles' );
-});
-function klrpn_adminbar_styles(){
-	if( is_admin() ) return; // Выходим если админка
-	ob_start();
-	?>
-	<style>
-		body.admin-bar { margin-top: 0; padding-bottom: 32px; }
-		#wpadminbar { top: auto !important; bottom: 0; }
-		#wpadminbar .quicklinks>ul>li { position:relative; }
-		#wpadminbar .ab-top-menu>.menupop>.ab-sub-wrapper { bottom: 32px; }
-		#wp-admin-bar-wp-logo{ display:none; } /* hide wp-logo */
-		/* remove absolute positioning for mobile */
-		@media screen and (max-width: 600px) {
-			#wpadminbar { position: fixed; }
-		}
-	</style>
-	<?php
-	$styles = ob_get_clean();
-	echo preg_replace( '/[\n\t]/', '', $styles ) ."\n";
+	add_action( 'wp_before_admin_bar_render', function(){
+    if( is_admin() ) return; // Выходим если админка
+    ob_start();
+    ?>
+    <style>
+      body.admin-bar { margin-top: 0; padding-bottom: 32px; }
+      #wpadminbar { top: auto !important; bottom: 0; }
+      #wpadminbar .quicklinks>ul>li { position:relative; }
+      #wpadminbar .ab-top-menu>.menupop>.ab-sub-wrapper { bottom: 32px; }
+      #wp-admin-bar-wp-logo{ display:none; } /* hide wp-logo */
+      /* remove absolute positioning for mobile */
+      @media screen and (max-width: 600px) {
+        #wpadminbar { position: fixed; }
+      }
+    </style>
+    <?php
+    $styles = ob_get_clean();
+    echo preg_replace( '/[\n\t]/', '', $styles ) ."\n";
+  } );
 }
