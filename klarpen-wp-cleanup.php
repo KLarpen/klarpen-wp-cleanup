@@ -15,6 +15,11 @@
  defined('ABSPATH') || exit;
 
 /**
+ * Quick Tip: All settings you can make by (un)commenting/removing/adding code right inside this file.
+ * In case the specific functionality provided throught the separate function & action hook – you can just (un)comment the hook add_action/add_filter command.
+ */
+
+/**
  * Holder function for the command to deregister/dequeue unused core scripts and styles
  */
 function klrpn_exclude_unused_scripts_n_styles(){
