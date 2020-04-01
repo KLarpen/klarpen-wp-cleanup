@@ -215,6 +215,16 @@ if ( defined('HIDE_ACF_ADMIN_PANEL') && HIDE_ACF_ADMIN_PANEL ) {
 
 
 /**
+ * Switch off toolbar on the front end completely and for all (including site admins)
+ * 
+ * Uncomment if you need this customization
+ */
+add_action('after_setup_theme', function(){
+	if ( ! is_admin() ) show_admin_bar( false );
+});
+
+
+/**
  * Переносим панель инструментов для front end вниз экрана
  * Для включения достаточно раскомментировать add_action(...) над функцией
  * 
