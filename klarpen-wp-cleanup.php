@@ -29,7 +29,7 @@ function klrpn_exclude_unused_scripts_n_styles(){
 	}
 }
 # Comment the action if not used
-add_action( 'init', 'klrpn_exclude_unused_scripts_n_styles' );
+// add_action( 'init', 'klrpn_exclude_unused_scripts_n_styles' );
 
 
 /**
@@ -62,7 +62,7 @@ add_filter('option_use_smilies', '__return_false');
  */
 add_action( 'widgets_init', 'klrpn_unregister_basic_widgets' );
 function klrpn_unregister_basic_widgets() {
-	unregister_widget('WP_Widget_Pages');
+	// unregister_widget('WP_Widget_Pages');
 	unregister_widget('WP_Widget_Calendar');
 	// unregister_widget('WP_Widget_Archives');
 	// unregister_widget('WP_Widget_Links');
@@ -97,13 +97,13 @@ function klrpn_clear_wp_dash(){
 
 	// unset( $dash_normal['dashboard_incoming_links'] );  // Входящие ссылки
 	// unset( $dash_normal['dashboard_recent_comments'] ); // Последние комментарии
-	// unset( $dash_normal['dashboard_plugins'] );         // Последние Плагины
+	unset( $dash_normal['dashboard_plugins'] );         // Последние Плагины
 }
 
 /**
  * Удаление виджета "Добро пожаловать"
  */
-remove_action( 'welcome_panel', 'wp_welcome_panel' );
+// remove_action( 'welcome_panel', 'wp_welcome_panel' );
 
 
 
@@ -224,9 +224,9 @@ if ( defined('HIDE_ACF_ADMIN_PANEL') && HIDE_ACF_ADMIN_PANEL ) {
  * 
  * Uncomment if you need this customization
  */
-add_action('after_setup_theme', function(){
+/* add_action('after_setup_theme', function(){
 	if ( ! is_admin() ) show_admin_bar( false );
-});
+}); */
 
 
 /**
