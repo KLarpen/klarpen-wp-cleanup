@@ -12,6 +12,8 @@
  * @package         Klarpen_WP_Cleanup
  */
 
+ defined('ABSPATH') || exit;
+
 /**
  * Holder function for the command to deregister/dequeue unused core scripts and styles
  */
